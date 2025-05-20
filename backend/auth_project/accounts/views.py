@@ -100,7 +100,7 @@ from rest_framework_simplejwt.exceptions import TokenError
 class RegisterView(APIView):
     def post(self, request):
         data = request.data
-        username = data.get('name')  # You used 'name' in the frontend
+        username = data.get('name')  
         email = data.get('email')
         password = data.get('password')
 
@@ -133,7 +133,7 @@ class LoginView(APIView):
         except User.DoesNotExist:
             return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
 
-        # Authenticate using the username linked to the email
+        
         user = authenticate(username=user.username, password=password)
 
         if user is None:
